@@ -1,0 +1,31 @@
+<div class="card" *ngIf="product">
+    <div class="card-header">
+        {{pageTitle + ": " + product.productName}}
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td width="*">
+                    <li>{{product.productName}}</li>
+                    <li>{{product.releaseDate}}</li>
+                    <li>{{product.price | currency: "EUR":"symbol":"1.2-2"}}</li>
+                    <li><pm-star [rating]="product.starRating"
+                        (ratingClicked)="onRatingClicked($event)"></pm-star></li>
+                    <li>{{product.productCode | lowercase | convertToSpaces: "-"}}</li>
+                </td>
+                <td align="right">
+                    <img
+                    [src]="product.imageUrl"
+                    [title]="product.productName"
+                    style.width.px={{imageWidth}}
+                    style.margin.px={{imageMargin}}>
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-outline-secondary"
+                (click)="onBack()"
+                style="width:80px">
+            <i class="fa fa-chevron-left"></i> Back
+        </button>
+    </div>
+</div>
